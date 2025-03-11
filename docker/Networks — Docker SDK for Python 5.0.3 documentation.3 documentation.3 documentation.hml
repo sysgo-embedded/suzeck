@@ -1,0 +1,430 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Networks &#8212; Docker SDK for Python 5.0.3 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="https://assets.readthedocs.org/static/css/badge_only.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '5.0.3',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-doc-embed.js"></script>
+    <link rel="top" title="Docker SDK for Python 5.0.3 documentation" href="index.html" />
+    <link rel="next" title="Nodes" href="nodes.html" />
+    <link rel="prev" title="Images" href="images.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+<!-- RTD Extra Head -->
+
+    <!--
+    Always link to the latest version, as canonical.
+    http://docs.readthedocs.org/en/latest/canonical.html
+    -->
+    <link rel="canonical" href="https://docker-py.readthedocs.io/en/stable/networks.html" />
+
+<link rel="stylesheet" href="https://assets.readthedocs.org/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "build_date": "2021-10-07T22:55:21Z", "builder": "sphinx", "canonical_url": "https://docker-py.readthedocs.io/en/stable/", "commit": "3686248b", "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "networks", "programming_language": "py", "project": "docker-py", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "alabaster", "user_analytics_code": "", "version": "stable"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="https://assets.readthedocs.org/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+  <body role="document">
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Docker SDK for Python</a></h1>
+
+
+
+<p class="blurb">A Python library for the Docker Engine API</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configs.html">Configs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="containers.html">Containers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="images.html">Images</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#network-objects">Network objects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="nodes.html">Nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plugins.html">Plugins</a></li>
+<li class="toctree-l1"><a class="reference internal" href="secrets.html">Secrets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swarm.html">Swarm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="volumes.html">Volumes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Low-level API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tls.html">Using TLS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_guides/index.html">User guides and tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="change-log.html">Change log</a></li>
+</ul>
+
+
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-docker.models.networks">
+<span id="networks"></span><h1>Networks<a class="headerlink" href="#module-docker.models.networks" title="Permalink to this headline">¶</a></h1>
+<p>Create and manage networks on the server. For more information about networks, <a class="reference external" href="https://docs.docker.com/engine/userguide/networking/">see the Engine documentation</a>.</p>
+<p>Methods available on <code class="docutils literal"><span class="pre">client.networks</span></code>:</p>
+<dl class="hide-signature class">
+<dt id="docker.models.networks.NetworkCollection">
+<em class="property">class </em><code class="descname">NetworkCollection</code><a class="headerlink" href="#docker.models.networks.NetworkCollection" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="docker.models.networks.NetworkCollection.create">
+<code class="descname">create</code><span class="sig-paren">(</span><em>name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.NetworkCollection.create" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a network. Similar to the <code class="docutils literal"><span class="pre">docker</span> <span class="pre">network</span> <span class="pre">create</span></code>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>str</em>) &#8211; Name of the network</li>
+<li><strong>driver</strong> (<em>str</em>) &#8211; Name of the driver used to create the network</li>
+<li><strong>options</strong> (<em>dict</em>) &#8211; Driver options as a key-value dictionary</li>
+<li><strong>ipam</strong> (<a class="reference internal" href="api.html#docker.types.IPAMConfig" title="docker.types.IPAMConfig"><em>IPAMConfig</em></a>) &#8211; Optional custom IP scheme for the network.</li>
+<li><strong>check_duplicate</strong> (<em>bool</em>) &#8211; Request daemon to check for networks with
+same name. Default: <code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>internal</strong> (<em>bool</em>) &#8211; Restrict external access to the network. Default
+<code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li><strong>labels</strong> (<em>dict</em>) &#8211; Map of labels to set on the network. Default
+<code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>enable_ipv6</strong> (<em>bool</em>) &#8211; Enable IPv6 on the network. Default <code class="docutils literal"><span class="pre">False</span></code>.</li>
+<li><strong>attachable</strong> (<em>bool</em>) &#8211; If enabled, and the network is in the global
+scope,  non-service containers on worker nodes will be able to
+connect to the network.</li>
+<li><strong>scope</strong> (<em>str</em>) &#8211; Specify the network&#8217;s scope (<code class="docutils literal"><span class="pre">local</span></code>, <code class="docutils literal"><span class="pre">global</span></code> or
+<code class="docutils literal"><span class="pre">swarm</span></code>)</li>
+<li><strong>ingress</strong> (<em>bool</em>) &#8211; If set, create an ingress network which provides
+the routing-mesh in swarm mode.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The network that was created.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">(<a class="reference internal" href="#docker.models.networks.Network" title="docker.models.networks.Network"><code class="xref py py-class docutils literal"><span class="pre">Network</span></code></a>)</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<p>A network using the bridge driver:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="s2">&quot;network1&quot;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s2">&quot;bridge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also create more advanced networks with custom IPAM
+configurations. For example, setting the subnet to
+<code class="docutils literal"><span class="pre">192.168.52.0/24</span></code> and gateway address to <code class="docutils literal"><span class="pre">192.168.52.254</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ipam_pool</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">IPAMPool</span><span class="p">(</span>
+<span class="go">    subnet=&#39;192.168.52.0/24&#39;,</span>
+<span class="go">    gateway=&#39;192.168.52.254&#39;</span>
+<span class="go">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ipam_config</span> <span class="o">=</span> <span class="n">docker</span><span class="o">.</span><span class="n">types</span><span class="o">.</span><span class="n">IPAMConfig</span><span class="p">(</span>
+<span class="go">    pool_configs=[ipam_pool]</span>
+<span class="go">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span><span class="o">.</span><span class="n">networks</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+<span class="go">    &quot;network1&quot;,</span>
+<span class="go">    driver=&quot;bridge&quot;,</span>
+<span class="go">    ipam=ipam_config</span>
+<span class="go">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.NetworkCollection.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>network_id</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.NetworkCollection.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a network by its ID.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>network_id</strong> (<em>str</em>) &#8211; The ID of the network.</li>
+<li><strong>verbose</strong> (<em>bool</em>) &#8211; Retrieve the service details across the cluster in
+swarm mode.</li>
+<li><strong>scope</strong> (<em>str</em>) &#8211; Filter the network by scope (<code class="docutils literal"><span class="pre">swarm</span></code>, <code class="docutils literal"><span class="pre">global</span></code>
+or <code class="docutils literal"><span class="pre">local</span></code>).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(<a class="reference internal" href="#docker.models.networks.Network" title="docker.models.networks.Network"><code class="xref py py-class docutils literal"><span class="pre">Network</span></code></a>) The network.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><ul class="first last simple">
+<li><code class="xref py py-class docutils literal"><span class="pre">docker.errors.NotFound</span></code> &#8211; If the network does not exist.</li>
+<li><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.NetworkCollection.list">
+<code class="descname">list</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.NetworkCollection.list" title="Permalink to this definition">¶</a></dt>
+<dd><p>List networks. Similar to the <code class="docutils literal"><span class="pre">docker</span> <span class="pre">networks</span> <span class="pre">ls</span></code> command.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>names</strong> (<a class="reference internal" href="#docker.models.networks.NetworkCollection.list" title="docker.models.networks.NetworkCollection.list"><code class="xref py py-class docutils literal"><span class="pre">list</span></code></a>) &#8211; List of names to filter by.</li>
+<li><strong>ids</strong> (<a class="reference internal" href="#docker.models.networks.NetworkCollection.list" title="docker.models.networks.NetworkCollection.list"><code class="xref py py-class docutils literal"><span class="pre">list</span></code></a>) &#8211; List of ids to filter by.</li>
+<li><strong>filters</strong> (<em>dict</em>) &#8211; <p>Filters to be processed on the network list.
+Available filters:
+- <code class="docutils literal"><span class="pre">driver=[&lt;driver-name&gt;]</span></code> Matches a network&#8217;s driver.
+- <cite>label</cite> (str|list): format either <code class="docutils literal"><span class="pre">&quot;key&quot;</span></code>, <code class="docutils literal"><span class="pre">&quot;key=value&quot;</span></code></p>
+<blockquote>
+<div>or a list of such.</div></blockquote>
+<ul>
+<li><code class="docutils literal"><span class="pre">type=[&quot;custom&quot;|&quot;builtin&quot;]</span></code> Filters networks by type.</li>
+</ul>
+</li>
+<li><strong>greedy</strong> (<em>bool</em>) &#8211; Fetch more details for each network individually.
+You might want this to get the containers attached to them.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(list of <a class="reference internal" href="#docker.models.networks.Network" title="docker.models.networks.Network"><code class="xref py py-class docutils literal"><span class="pre">Network</span></code></a>) The networks on the server.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.NetworkCollection.prune">
+<code class="descname">prune</code><span class="sig-paren">(</span><em>filters=None</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.NetworkCollection.prune" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete unused networks</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filters</strong> (<em>dict</em>) &#8211; Filters to process on the prune list.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="docutils">
+<dt>A dict containing a list of deleted network names and</dt>
+<dd>the amount of disk space reclaimed in bytes.</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">(dict)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="section" id="network-objects">
+<h2>Network objects<a class="headerlink" href="#network-objects" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="docker.models.networks.Network">
+<em class="property">class </em><code class="descname">Network</code><a class="headerlink" href="#docker.models.networks.Network" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Docker network.</p>
+<dl class="attribute">
+<dt id="docker.models.networks.Network.id">
+<code class="descname">id</code><a class="headerlink" href="#docker.models.networks.Network.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ID of the object.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="docker.models.networks.Network.short_id">
+<code class="descname">short_id</code><a class="headerlink" href="#docker.models.networks.Network.short_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ID of the object, truncated to 10 characters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="docker.models.networks.Network.name">
+<code class="descname">name</code><a class="headerlink" href="#docker.models.networks.Network.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The name of the network.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="docker.models.networks.Network.containers">
+<code class="descname">containers</code><a class="headerlink" href="#docker.models.networks.Network.containers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The containers that are connected to the network, as a list of
+<a class="reference internal" href="containers.html#docker.models.containers.Container" title="docker.models.containers.Container"><code class="xref py py-class docutils literal"><span class="pre">Container</span></code></a> objects.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="docker.models.networks.Network.attrs">
+<code class="descname">attrs</code><a class="headerlink" href="#docker.models.networks.Network.attrs" title="Permalink to this definition">¶</a></dt>
+<dd><p>The raw representation of this object from the server.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.Network.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><em>container</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.Network.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect a container to this network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container</strong> (<em>str</em>) &#8211; Container to connect to this network, as either
+an ID, name, or <a class="reference internal" href="containers.html#docker.models.containers.Container" title="docker.models.containers.Container"><code class="xref py py-class docutils literal"><span class="pre">Container</span></code></a>
+object.</li>
+<li><strong>aliases</strong> (<code class="xref py py-class docutils literal"><span class="pre">list</span></code>) &#8211; A list of aliases for this endpoint.
+Names in that list can be used within the network to reach the
+container. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>links</strong> (<code class="xref py py-class docutils literal"><span class="pre">list</span></code>) &#8211; A list of links for this endpoint.
+Containers declared in this list will be linkedto this
+container. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>ipv4_address</strong> (<em>str</em>) &#8211; The IP address of this container on the
+network, using the IPv4 protocol. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>ipv6_address</strong> (<em>str</em>) &#8211; The IP address of this container on the
+network, using the IPv6 protocol. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+<li><strong>link_local_ips</strong> (<code class="xref py py-class docutils literal"><span class="pre">list</span></code>) &#8211; A list of link-local (IPv4/IPv6)
+addresses.</li>
+<li><strong>driver_opt</strong> (<em>dict</em>) &#8211; A dictionary of options to provide to the
+network driver. Defaults to <code class="docutils literal"><span class="pre">None</span></code>.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.Network.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><em>container</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.Network.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Disconnect a container from this network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>container</strong> (<em>str</em>) &#8211; Container to disconnect from this network, as
+either an ID, name, or
+<a class="reference internal" href="containers.html#docker.models.containers.Container" title="docker.models.containers.Container"><code class="xref py py-class docutils literal"><span class="pre">Container</span></code></a> object.</li>
+<li><strong>force</strong> (<em>bool</em>) &#8211; Force the container to disconnect from a network.
+Default: <code class="docutils literal"><span class="pre">False</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.Network.reload">
+<code class="descname">reload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.Network.reload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load this object from the server again and update <code class="docutils literal"><span class="pre">attrs</span></code> with the
+new data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="docker.models.networks.Network.remove">
+<code class="descname">remove</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#docker.models.networks.Network.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove this network.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">docker.errors.APIError</span></code> &#8211; If the server returns an error.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2021 Docker Inc.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/networks.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -8,3 +8,6 @@ Suzeck – Secure, safe, authorized & certifiable Edge & Cloud Key components �
 
 ## Acknowlegdment
 The Suzeck project gratefully acknowledges (partial) public funding from the European Union NextGenerationEU within the Important Project of Common European Interest – Cloud Infrastructures and Services (IPCEI-CIS) under grant agreement 13IPC023.
+
+<img src="/graphics/8ra-logo.jpg" width="250">
+<img src="/graphics/logo_sponsored_funding_eu_de.png" width="250">

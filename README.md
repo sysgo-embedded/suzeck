@@ -5,7 +5,6 @@ The networking of safety-critical systems in the rail sector, requires the use o
 
 ## Project outcome: 
 Suzeck – Secure, safe, authorized & certifiable Edge & Cloud Key components – provides a safe compute platform for a decentralised environment, enabling a software infrastructure for the advanced usage of data processing resources from Cloud to Edge for safety-critical environments. The SuzECK project creates a safe computing platform (SCP), which includes a reference implementation of the platform-independent application programming interface (OCORA PI API https://github.com/OCORA-Public/Publications/blob/master/00_OCORA%20Latest%20Publications/Latest%20Release/OCORA-TWS03-030_SCP_Specification_of_the_PI_API_between_Application_and_Platform.pdf).
-//![image](https://github.com/user-attachments/assets/20e71e3e-0c32-41e8-9687-270921469bc1)
 
 ## Acknowlegdment
 The Suzeck project gratefully acknowledges (partial) public funding from the European Union NextGenerationEU within the Important Project of Common European Interest – Cloud Infrastructures and Services (IPCEI-CIS) under grant agreement 13IPC023.

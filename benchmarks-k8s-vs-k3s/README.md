@@ -8,7 +8,7 @@
 
 This directory is part of the **[SuzECK](https://github.com/sysgo-embedded/suzeck)** open reference materials ([sysgo-embedded/suzeck](https://github.com/sysgo-embedded/suzeck)). **SuzECK** (*Secure, safe, authorized & certifiable Edge & Cloud Key components*) develops a **Safe Computing Platform (SCP)** for safety-critical rail connectivity—from edge to cloud—aligned with the European [OCORA SCP PI API](https://github.com/OCORA-Public/Publications/blob/master/00_OCORA%20Latest%20Publications/Latest%20Release/OCORA-TWS03-030_SCP_Specification_of_the_PI_API_between_Application_and_Platform.pdf). The SCP defines a platform-independent interface between safety-relevant rail applications and cloud/edge platforms, enabling portability across providers while preserving a dedicated safety layer.
 
-The benchmark suite below supports SuzECK by providing reproducible measurements of Kubernetes distributions used in decentralised edge and cloud deployments—helping compare orchestration overhead, networking, and control-plane behaviour when sizing infrastructure for safety-related workloads.
+The benchmark suite below supports SuzECK by providing reproducible measurements of Kubernetes distributions used in decentralised edge and cloud deployments helping compare orchestration overhead, networking, and control-plane behaviour when sizing infrastructure for safety-related workloads.
 
 ### Acknowledgment
 

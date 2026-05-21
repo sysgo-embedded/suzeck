@@ -5,7 +5,7 @@
 | `docker/` | Container-based setup for the SCP reference environment |
 | `20240705 RT-Cloud 2024 Keynote speech/` | RT-Cloud 2024 keynote presentation and supporting materials |
 | `graphics/` | Project and funding logos (e.g. EU / sponsor artwork) |
-| *(additional folder)* | *To be added—document purpose here when published* |
+| 'benchmarks-k8s-vs-k3s' | framework for benchmarking and comparing Kubernetes distributions |
 Root-level assets include `SuzECK_Project_Graphic.png`, `SuzECK_logo_white.png`, and project documentation below. The repository is under the [MIT License](LICENSE).
 
 <img src="/SuzECK_Project_Graphic.png" width="250">

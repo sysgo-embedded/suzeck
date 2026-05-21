@@ -1,3 +1,13 @@
+**SuzECK** (Secure, safe, authorized & certifiable Edge & Cloud Key components) is the open reference materials for a **Safe Computing Platform (SCP)** aimed at safety-critical rail connectivity—from edge to cloud. This repository supports the [OCORA SCP PI API](https://github.com/OCORA-Public/Publications/blob/master/00_OCORA%20Latest%20Publications/Latest%20Release/OCORA-TWS03-030_SCP_Specification_of_the_PI_API_between_Application_and_Platform.pdf) with a functional open-source reference implementation and related project assets; proprietary safety adaptations are maintained separately.
+### Repository contents
+| Path | Description |
+|------|-------------|
+| `docker/` | Container-based setup for the SCP reference environment |
+| `20240705 RT-Cloud 2024 Keynote speech/` | RT-Cloud 2024 keynote presentation and supporting materials |
+| `graphics/` | Project and funding logos (e.g. EU / sponsor artwork) |
+| *(additional folder)* | *To be added—document purpose here when published* |
+Root-level assets include `SuzECK_Project_Graphic.png`, `SuzECK_logo_white.png`, and project documentation below. The repository is under the [MIT License](LICENSE).
+
 <img src="/SuzECK_Project_Graphic.png" width="250">
 
 ## Description:

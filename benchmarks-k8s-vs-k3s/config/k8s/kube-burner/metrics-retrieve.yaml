@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kb-metrics-retrieve
+  namespace: kube-burner
+spec:
+  restartPolicy: Never
+  containers:
+  - name: debug
+    image: busybox
+    command: ["sh", "-c", "sleep 3600"]
+    volumeMounts:
+    - name: kb-metrics
+      mountPath: /kube-burner/benchmarks
+  volumes:
+  - name: kb-metrics
+    persistentVolumeClaim:
+      claimName: kube-burner-metrics-pvc

@@ -1,0 +1,45 @@
+global:
+  gc: true
+  measurements:
+  - name: podLatency
+    thresholds:
+      - conditionType: Ready
+        metric: P99
+        threshold: 10s
+
+  - name: podMetrics
+
+metricsEndpoints:
+  - endpoint: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+    alias: os-indexing
+    metrics: [/kube-burner/metrics.yaml]
+    alerts: [/kube-burner/alerts.yaml]
+    indexer:
+      type: local
+      metricsDirectory: /kube-burner/benchmarks
+
+jobs:
+- name: density-test
+  jobType: create
+  
+  jobIterations: 45
+  qps: 10
+  burst: 5
+  
+  namespace: kube-burner-test
+  namespacedIterations: true
+  namespaceLabels:
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/warn: privileged
+  
+  preLoadImages: true
+  preLoadPeriod: 30s
+  
+  waitWhenFinished: true
+  verifyObjects: true
+  errorOnVerify: false
+  
+  objects:
+  - objectTemplate: /kube-burner/manifests/deployment.yaml
+    replicas: 2

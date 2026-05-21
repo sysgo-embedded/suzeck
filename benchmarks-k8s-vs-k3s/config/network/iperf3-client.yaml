@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: iperf3-client
+spec:
+  template:
+    spec:
+      containers:
+      - name: iperf3-client
+        image: networkstatic/iperf3
+        command: ["iperf3", "-c", "iperf3-server", "-t", "30", "--bidir"]  # connect to server, 30s test
+      restartPolicy: Never
+      

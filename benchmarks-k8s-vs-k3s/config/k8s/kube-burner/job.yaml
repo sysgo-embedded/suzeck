@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: kube-burner-job
+  namespace: kube-burner
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      serviceAccountName: kube-burner
+      restartPolicy: Never
+      containers:
+      - name: kube-burner
+        image: quay.io/kube-burner/kube-burner:v2.2.2
+        command:
+          - kube-burner
+          - init
+          - --config
+          - /kube-burner/kube-burner.yaml
+
+        volumeMounts:
+        - name: kb-config
+          mountPath: /kube-burner
+        - name: kb-manifests
+          mountPath: /kube-burner/manifests
+        - name: kb-metrics
+          mountPath: /kube-burner/benchmarks
+          
+      volumes:
+      - name: kb-config
+        configMap:
+          name: kube-burner-config
+      - name: kb-manifests
+        configMap:
+          name: kube-burner-manifests
+      - name: kb-metrics
+        persistentVolumeClaim:
+          claimName: kube-burner-metrics-pvc

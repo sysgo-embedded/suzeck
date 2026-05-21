@@ -1,0 +1,1 @@
+[{"timestamp":"2026-02-06T22:42:13.598Z","labels":{"node":"staging"},"value":8325894144,"uuid":"4653e87b-2a83-4b84-bef7-23f07f3b9661","query":"avg(node_memory_MemTotal_bytes) by (node)","metricName":"nodeMemoryTotal","jobName":"density-test","metadata":null}]

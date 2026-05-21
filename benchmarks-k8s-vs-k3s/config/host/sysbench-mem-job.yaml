@@ -1,0 +1,20 @@
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sysbench-mem
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: sb-mem
+        image: severalnines/sysbench
+        command: ["sysbench"]
+        args:
+          - "memory"
+          - "--memory-total-size=1G"
+          - "--threads=4"
+          - "--time=30"
+          - "run"

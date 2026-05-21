@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sysbench-cpu
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: sb-cpu
+        image: severalnines/sysbench
+        command: ["sysbench"]
+        args:
+          - "cpu"
+          - "--cpu-max-prime=20000"
+          - "--threads=4"
+          - "--time=30"
+          - "run"

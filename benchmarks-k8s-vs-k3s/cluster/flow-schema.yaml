@@ -1,0 +1,28 @@
+apiVersion: flowcontrol.apiserver.k8s.io/v1
+kind: FlowSchema
+metadata:
+  name: monitoring-tools
+spec:
+  matchingPrecedence: 1000
+  priorityLevelConfiguration:
+    name: monitoring
+  rules:
+  - resourceRules:
+    # Rule for namespaced resources
+    - apiGroups: ["*"]
+      resources: ["pods"]
+      verbs: ["list", "watch"]
+      namespaces: ["monitoring"]
+      clusterScope: false
+
+    # Rule for cluster-scoped resources
+    - apiGroups: ["*"]
+      resources: ["nodes"]
+      verbs: ["list", "watch"]
+      clusterScope: true
+    
+    subjects:
+    - kind: ServiceAccount
+      serviceAccount:
+        name: prometheus
+        namespace: monitoring
